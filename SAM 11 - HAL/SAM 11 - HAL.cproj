@@ -46,44 +46,44 @@
   <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
     <ToolchainSettings>
       <ArmGcc>
-  <armgcc.common.outputfiles.hex>True</armgcc.common.outputfiles.hex>
-  <armgcc.common.outputfiles.lss>True</armgcc.common.outputfiles.lss>
-  <armgcc.common.outputfiles.eep>True</armgcc.common.outputfiles.eep>
-  <armgcc.common.outputfiles.bin>True</armgcc.common.outputfiles.bin>
-  <armgcc.common.outputfiles.srec>True</armgcc.common.outputfiles.srec>
-  <armgcc.compiler.symbols.DefSymbols>
-    <ListValues>
-      <Value>NDEBUG</Value>
-    </ListValues>
-  </armgcc.compiler.symbols.DefSymbols>
-  <armgcc.compiler.directories.IncludePaths>
-    <ListValues>
-      <Value>%24(PackRepoDir)\arm\cmsis\5.0.1\CMSIS\Include\</Value>
-      <Value>%24(PackRepoDir)\atmel\SAML11_DFP\1.0.81\include</Value>
-    </ListValues>
-  </armgcc.compiler.directories.IncludePaths>
-  <armgcc.compiler.optimization.level>Optimize for size (-Os)</armgcc.compiler.optimization.level>
-  <armgcc.compiler.optimization.PrepareFunctionsForGarbageCollection>True</armgcc.compiler.optimization.PrepareFunctionsForGarbageCollection>
-  <armgcc.compiler.warnings.AllWarnings>True</armgcc.compiler.warnings.AllWarnings>
-  <armgcc.linker.libraries.Libraries>
-    <ListValues>
-      <Value>libm</Value>
-    </ListValues>
-  </armgcc.linker.libraries.Libraries>
-  <armgcc.linker.optimization.GarbageCollectUnusedSections>True</armgcc.linker.optimization.GarbageCollectUnusedSections>
-  <armgcc.assembler.general.IncludePaths>
-    <ListValues>
-      <Value>%24(PackRepoDir)\arm\cmsis\5.0.1\CMSIS\Include\</Value>
-      <Value>%24(PackRepoDir)\atmel\SAML11_DFP\1.0.81\include</Value>
-    </ListValues>
-  </armgcc.assembler.general.IncludePaths>
-  <armgcc.preprocessingassembler.general.IncludePaths>
-    <ListValues>
-      <Value>%24(PackRepoDir)\arm\cmsis\5.0.1\CMSIS\Include\</Value>
-      <Value>%24(PackRepoDir)\atmel\SAML11_DFP\1.0.81\include</Value>
-    </ListValues>
-  </armgcc.preprocessingassembler.general.IncludePaths>
-</ArmGcc>
+        <armgcc.common.outputfiles.hex>True</armgcc.common.outputfiles.hex>
+        <armgcc.common.outputfiles.lss>True</armgcc.common.outputfiles.lss>
+        <armgcc.common.outputfiles.eep>True</armgcc.common.outputfiles.eep>
+        <armgcc.common.outputfiles.bin>True</armgcc.common.outputfiles.bin>
+        <armgcc.common.outputfiles.srec>True</armgcc.common.outputfiles.srec>
+        <armgcc.compiler.symbols.DefSymbols>
+          <ListValues>
+            <Value>NDEBUG</Value>
+          </ListValues>
+        </armgcc.compiler.symbols.DefSymbols>
+        <armgcc.compiler.directories.IncludePaths>
+          <ListValues>
+            <Value>%24(PackRepoDir)\arm\cmsis\5.0.1\CMSIS\Include\</Value>
+            <Value>%24(PackRepoDir)\atmel\SAML11_DFP\1.0.81\include</Value>
+          </ListValues>
+        </armgcc.compiler.directories.IncludePaths>
+        <armgcc.compiler.optimization.level>Optimize for size (-Os)</armgcc.compiler.optimization.level>
+        <armgcc.compiler.optimization.PrepareFunctionsForGarbageCollection>True</armgcc.compiler.optimization.PrepareFunctionsForGarbageCollection>
+        <armgcc.compiler.warnings.AllWarnings>True</armgcc.compiler.warnings.AllWarnings>
+        <armgcc.linker.libraries.Libraries>
+          <ListValues>
+            <Value>libm</Value>
+          </ListValues>
+        </armgcc.linker.libraries.Libraries>
+        <armgcc.linker.optimization.GarbageCollectUnusedSections>True</armgcc.linker.optimization.GarbageCollectUnusedSections>
+        <armgcc.assembler.general.IncludePaths>
+          <ListValues>
+            <Value>%24(PackRepoDir)\arm\cmsis\5.0.1\CMSIS\Include\</Value>
+            <Value>%24(PackRepoDir)\atmel\SAML11_DFP\1.0.81\include</Value>
+          </ListValues>
+        </armgcc.assembler.general.IncludePaths>
+        <armgcc.preprocessingassembler.general.IncludePaths>
+          <ListValues>
+            <Value>%24(PackRepoDir)\arm\cmsis\5.0.1\CMSIS\Include\</Value>
+            <Value>%24(PackRepoDir)\atmel\SAML11_DFP\1.0.81\include</Value>
+          </ListValues>
+        </armgcc.preprocessingassembler.general.IncludePaths>
+      </ArmGcc>
     </ToolchainSettings>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
@@ -103,6 +103,13 @@
     <ListValues>
       <Value>%24(PackRepoDir)\arm\cmsis\5.0.1\CMSIS\Include\</Value>
       <Value>%24(PackRepoDir)\atmel\SAML11_DFP\1.0.81\include</Value>
+      <Value>../utils/include</Value>
+      <Value>../include</Value>
+      <Value>../hri</Value>
+      <Value>../hpl/port</Value>
+      <Value>../hpl/systick</Value>
+      <Value>../config</Value>
+      <Value>../hpl/core</Value>
     </ListValues>
   </armgcc.compiler.directories.IncludePaths>
   <armgcc.compiler.optimization.level>Optimize (-O1)</armgcc.compiler.optimization.level>
@@ -115,6 +122,7 @@
     </ListValues>
   </armgcc.linker.libraries.Libraries>
   <armgcc.linker.optimization.GarbageCollectUnusedSections>True</armgcc.linker.optimization.GarbageCollectUnusedSections>
+  <armgcc.linker.memorysettings.ExternalRAM />
   <armgcc.assembler.general.IncludePaths>
     <ListValues>
       <Value>%24(PackRepoDir)\arm\cmsis\5.0.1\CMSIS\Include\</Value>
@@ -131,15 +139,237 @@
   <armgcc.preprocessingassembler.debugging.DebugLevel>Default (-Wa,-g)</armgcc.preprocessingassembler.debugging.DebugLevel>
 </ArmGcc>
     </ToolchainSettings>
+    <OutputFileName>libSAM11_HAL</OutputFileName>
+    <OutputFileExtension>.a</OutputFileExtension>
+    <OutputType>StaticLibrary</OutputType>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="library.c">
-      <SubType>compile</SubType>
-    </Compile>
+    <Folder Include="hpl\core" />
+    <Folder Include="hpl\systick" />
+    <Folder Include="hpl\port" />
+    <Folder Include="include" />
+    <Folder Include="hri" />
+    <Folder Include="hpl" />
+    <Folder Include="config" />
+    <Folder Include="utils" />
+    <Folder Include="src" />
+    <Folder Include="utils\include" />
+    <Folder Include="utils\src" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="include" />
-    <Folder Include="src" />
+    <Compile Include="config\hpl_port_config.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="config\hpl_systick_config.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="hpl\core\hpl_core_m23_base.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="hpl\port\hpl_gpio_base.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="hpl\systick\hpl_systick.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="hri\hri_ac_l11.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="hri\hri_adc_l11.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="hri\hri_ccl_l11.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="hri\hri_dac_l11.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="hri\hri_dmac_l11.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="hri\hri_dsu_l11.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="hri\hri_eic_l11.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="hri\hri_evsys_l11.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="hri\hri_freqm_l11.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="hri\hri_gclk_l11.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="hri\hri_l11.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="hri\hri_mclk_l11.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="hri\hri_nvic_l11.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="hri\hri_nvmctrl_l11.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="hri\hri_opamp_l11.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="hri\hri_osc32kctrl_l11.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="hri\hri_oscctrl_l11.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="hri\hri_pac_l11.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="hri\hri_pm_l11.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="hri\hri_port_l11.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="hri\hri_rstc_l11.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="hri\hri_rtc_l11.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="hri\hri_sercom_l11.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="hri\hri_supc_l11.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="hri\hri_systemcontrol_l11.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="hri\hri_systick_l11.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="hri\hri_tc_l11.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="hri\hri_tram_l11.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="hri\hri_trng_l11.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="hri\hri_wdt_l11.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="include\hal_atomic.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="include\hal_delay.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="include\hal_gpio.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="include\hal_init.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="include\hal_io.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="include\hal_sleep.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="include\hpl_core.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="include\hpl_delay.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="include\hpl_dma.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="include\hpl_gpio.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="include\hpl_init.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="include\hpl_irq.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="include\hpl_missing_features.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="include\hpl_reset.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="include\hpl_sleep.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="include\hpl_time_measure.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="src\hal_atomic.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="src\hal_delay.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="src\hal_gpio.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="src\hal_init.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="src\hal_io.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="src\hal_sleep.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="utils\include\compiler.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="utils\include\err_codes.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="utils\include\events.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="utils\include\parts.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="utils\include\utils.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="utils\include\utils_assert.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="utils\include\utils_event.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="utils\include\utils_increment_macro.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="utils\include\utils_list.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="utils\include\utils_repeat_macro.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="utils\src\utils_assert.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="utils\src\utils_event.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="utils\src\utils_list.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="utils\src\utils_syscalls.c">
+      <SubType>compile</SubType>
+    </Compile>
   </ItemGroup>
   <Import Project="$(AVRSTUDIO_EXE_PATH)\\Vs\\Compiler.targets" />
 </Project>

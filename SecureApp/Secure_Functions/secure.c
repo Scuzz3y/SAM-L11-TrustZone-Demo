@@ -19,13 +19,13 @@
  */
 
 #include "secure.h"    /* Header file with secure interface API */
+#include "hal_gpio.h"
+#include "hal_delay.h"
 
-int func1(int x)
+#define LED0 GPIO(GPIO_PORTA, 7)
+
+void blink_led_10_s(void)
 {
-	return x + 3;
+	gpio_toggle_pin_level(LED0);
 }
 
-int func2(int x)
-{
-	return x - 2;
-}

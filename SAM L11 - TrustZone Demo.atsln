@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Atmel Studio Solution File, Format Version 11.00
 VisualStudioVersion = 14.0.23107.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{54F91283-7BC4-4236-8FF9-10F437C3AD48}") = "SecureApp", "SAM L11 - TrustZone Demo\SecureApp\SecureApp.cproj", "{DCE6C7E3-EE26-4D79-826B-08594B9AD897}"
+Project("{54F91283-7BC4-4236-8FF9-10F437C3AD48}") = "SecureApp", "SecureApp\SecureApp.cproj", "{DCE6C7E3-EE26-4D79-826B-08594B9AD897}"
 EndProject
-Project("{54F91283-7BC4-4236-8FF9-10F437C3AD48}") = "NonSecureApp", "SAM L11 - TrustZone Demo\NonSecureApp\NonSecureApp.cproj", "{434D1453-376D-4606-80AF-12F77A6947E1}"
+Project("{54F91283-7BC4-4236-8FF9-10F437C3AD48}") = "NonSecureApp", "NonSecureApp\NonSecureApp.cproj", "{434D1453-376D-4606-80AF-12F77A6947E1}"
 EndProject
 Project("{54F91283-7BC4-4236-8FF9-10F437C3AD48}") = "SAM 11 - HAL", "SAM 11 - HAL\SAM 11 - HAL.cproj", "{CE51F8BA-8740-4A66-8BCB-CAA887667395}"
 EndProject

@@ -21,8 +21,6 @@
 #include "sam.h"
 #include "veneer.h"
 
-volatile int val1, val2;
-
 /*
 	* Related User Row Fuse bits for this example:
 	  * AS = 0x80
@@ -34,11 +32,7 @@ volatile int val1, val2;
 int main(void)
 {
 	/* Call non-secure callable function secure_func1 */
-	
-	val1 = secure_func1 (1);
-	
-	/* Call non-secure callable function secure_func2 */
-	val2 = secure_func2 (7);
+	secure_blink_led_10_s();
 	
 	while (1);
 }

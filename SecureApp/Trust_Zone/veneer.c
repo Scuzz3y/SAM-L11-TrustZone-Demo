@@ -21,13 +21,8 @@
 #include "secure.h"    /* Header file with secure interface API */
 
 /* Non-secure callable (entry) function */
-int __attribute__((cmse_nonsecure_entry)) secure_func1(int x)
+void __attribute__((cmse_nonsecure_entry)) secure_blink_led_10_s(void)
 {
-	return func1(x);
+	blink_led_10_s();
 }
 
-/* Non-secure callable (entry) function */
-int __attribute__((cmse_nonsecure_entry)) secure_func2(int x)
-{
-	return func2(x);
-}

@@ -73,7 +73,7 @@ main.d main.o: .././main.c \
  C:\Program\ Files\ (x86)\Atmel\Studio\7.0\Packs\atmel\SAML11_DFP\1.0.81\include/instance/trng.h \
  C:\Program\ Files\ (x86)\Atmel\Studio\7.0\Packs\atmel\SAML11_DFP\1.0.81\include/instance/wdt.h \
  C:\Program\ Files\ (x86)\Atmel\Studio\7.0\Packs\atmel\SAML11_DFP\1.0.81\include/pio/saml11e16a.h \
- ../../SecureApp/veneer.h
+ ../../SecureApp/Trust_Zone/veneer.h
 
 C:\Program\ Files\ (x86)\Atmel\Studio\7.0\Packs\atmel\SAML11_DFP\1.0.81\include/sam.h:
 
@@ -223,4 +223,4 @@ C:\Program\ Files\ (x86)\Atmel\Studio\7.0\Packs\atmel\SAML11_DFP\1.0.81\include/
 
 C:\Program\ Files\ (x86)\Atmel\Studio\7.0\Packs\atmel\SAML11_DFP\1.0.81\include/pio/saml11e16a.h:
 
-../../SecureApp/veneer.h:
+../../SecureApp/Trust_Zone/veneer.h:

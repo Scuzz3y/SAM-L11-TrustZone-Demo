@@ -79,9 +79,9 @@
   </armgcc.compiler.symbols.DefSymbols>
   <armgcc.compiler.directories.IncludePaths>
     <ListValues>
-      <Value>../../SecureApp</Value>
       <Value>%24(PackRepoDir)\arm\cmsis\5.0.1\CMSIS\Include\</Value>
       <Value>%24(PackRepoDir)\atmel\SAML11_DFP\1.0.81\include</Value>
+      <Value>../../SecureApp/Trust_Zone</Value>
     </ListValues>
   </armgcc.compiler.directories.IncludePaths>
   <armgcc.compiler.optimization.level>Optimize (-O1)</armgcc.compiler.optimization.level>
@@ -92,14 +92,16 @@
   <armgcc.linker.general.AdditionalSpecs>Use syscall stubs (--specs=nosys.specs)</armgcc.linker.general.AdditionalSpecs>
   <armgcc.linker.libraries.Libraries>
     <ListValues>
-      <Value>secureapp-cmse-implib.lib</Value>
       <Value>libm</Value>
+      <Value>secureapp-gateway-veneer.lib</Value>
     </ListValues>
   </armgcc.linker.libraries.Libraries>
   <armgcc.linker.libraries.LibrarySearchPaths>
     <ListValues>
       <Value>..\..\SecureApp\Debug</Value>
       <Value>%24(ProjectDir)\Device_Startup</Value>
+      <Value>C:\Users\Scuzz3y\Documents\git\ARM TrustZone\SAM L11 - TrustZone Demo\SecureApp\Debug</Value>
+      <Value>C:\Users\Scuzz3y\Documents\git\ARM TrustZone\SAM L11 - TrustZone Demo\SecureApp\Trust_Zone</Value>
     </ListValues>
   </armgcc.linker.libraries.LibrarySearchPaths>
   <armgcc.linker.optimization.GarbageCollectUnusedSections>True</armgcc.linker.optimization.GarbageCollectUnusedSections>
@@ -123,10 +125,6 @@
     </ToolchainSettings>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="..\SecureApp\veneer.h">
-      <SubType>compile</SubType>
-      <Link>veneer.h</Link>
-    </Compile>
     <Compile Include="Device_Startup\startup_saml11e16a.c">
       <SubType>compile</SubType>
     </Compile>

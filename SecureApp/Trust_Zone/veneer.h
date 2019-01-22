@@ -22,8 +22,6 @@
 #define VENEER_H_
 
 /* Non-secure callable functions */
-extern int secure_func1(int x);
-extern int secure_func2(int x);
-
+extern void secure_blink_led_10_s(void);
 
 #endif /* VENEER_H_ */

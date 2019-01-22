@@ -10,5 +10,5 @@ main.c
 
 Secure_Functions\secure.c
 
-veneer.c
+Trust_Zone\veneer.c
 

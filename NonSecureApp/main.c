@@ -31,8 +31,11 @@
 /* Non-secure main() */
 int main(void)
 {
+	volatile int test = 0, retVal = 0;
 	/* Call non-secure callable function secure_func1 */
-	secure_blink_led_10_s();
+	//secure_blink_led_10_s();
+	
+	retVal = secure_add_3(test);
 	
 	while (1);
 }

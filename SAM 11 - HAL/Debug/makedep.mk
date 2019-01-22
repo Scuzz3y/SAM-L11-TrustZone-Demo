@@ -2,9 +2,23 @@
 # Automatically-generated file. Do not edit or delete the file
 ################################################################################
 
-hpl\core\hpl_core_m23_base.c
+hpl\src\hpl_core_m23_base.c
 
-hpl\systick\hpl_systick.c
+hpl\src\hpl_dmac.c
+
+hpl\src\hpl_gclk.c
+
+hpl\src\hpl_init.c
+
+hpl\src\hpl_mclk.c
+
+hpl\src\hpl_osc32kctrl.c
+
+hpl\src\hpl_oscctrl.c
+
+hpl\src\hpl_pm.c
+
+hpl\src\hpl_systick.c
 
 src\hal_atomic.c
 

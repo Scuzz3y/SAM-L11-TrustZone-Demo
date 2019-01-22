@@ -112,7 +112,7 @@ Secure_Functions/secure.d Secure_Functions/secure.o: \
  ../../SAM\ 11\ -\ HAL/hri/hri_trng_l11.h \
  ../../SAM\ 11\ -\ HAL/hri/hri_wdt_l11.h \
  ../../SAM\ 11\ -\ HAL/utils/include/err_codes.h \
- ../../SAM\ 11\ -\ HAL/hpl/port/hpl_gpio_base.h \
+ ../../SAM\ 11\ -\ HAL/hpl/include/hpl_gpio_base.h \
  ../../SAM\ 11\ -\ HAL/utils/include/utils_assert.h \
  ../../SAM\ 11\ -\ HAL/include/hal_delay.h \
  ../../SAM\ 11\ -\ HAL/include/hpl_irq.h \
@@ -345,7 +345,7 @@ C:\Program\ Files\ (x86)\Atmel\Studio\7.0\Packs\atmel\SAML11_DFP\1.0.81\include/
 
 ../../SAM\ 11\ -\ HAL/utils/include/err_codes.h:
 
-../../SAM\ 11\ -\ HAL/hpl/port/hpl_gpio_base.h:
+../../SAM\ 11\ -\ HAL/hpl/include/hpl_gpio_base.h:
 
 ../../SAM\ 11\ -\ HAL/utils/include/utils_assert.h:
 

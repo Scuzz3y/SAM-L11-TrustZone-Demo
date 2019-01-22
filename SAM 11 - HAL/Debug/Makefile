@@ -33,9 +33,8 @@ LINKER_SCRIPT_DEP:=
 
 # Every subdirectory with source files must be described here
 SUBDIRS :=  \
-../hpl/core \
-../hpl/systick \
-../hpl/port \
+../hpl/include \
+../hpl/src \
 ../include \
 ../hri \
 ../hpl \
@@ -48,8 +47,15 @@ SUBDIRS :=  \
 
 # Add inputs and outputs from these tool invocations to the build variables 
 C_SRCS +=  \
-../hpl/core/hpl_core_m23_base.c \
-../hpl/systick/hpl_systick.c \
+../hpl/src/hpl_core_m23_base.c \
+../hpl/src/hpl_dmac.c \
+../hpl/src/hpl_gclk.c \
+../hpl/src/hpl_init.c \
+../hpl/src/hpl_mclk.c \
+../hpl/src/hpl_osc32kctrl.c \
+../hpl/src/hpl_oscctrl.c \
+../hpl/src/hpl_pm.c \
+../hpl/src/hpl_systick.c \
 ../src/hal_atomic.c \
 ../src/hal_delay.c \
 ../src/hal_gpio.c \
@@ -69,8 +75,15 @@ ASM_SRCS +=
 
 
 OBJS +=  \
-hpl/core/hpl_core_m23_base.o \
-hpl/systick/hpl_systick.o \
+hpl/src/hpl_core_m23_base.o \
+hpl/src/hpl_dmac.o \
+hpl/src/hpl_gclk.o \
+hpl/src/hpl_init.o \
+hpl/src/hpl_mclk.o \
+hpl/src/hpl_osc32kctrl.o \
+hpl/src/hpl_oscctrl.o \
+hpl/src/hpl_pm.o \
+hpl/src/hpl_systick.o \
 src/hal_atomic.o \
 src/hal_delay.o \
 src/hal_gpio.o \
@@ -83,8 +96,15 @@ utils/src/utils_list.o \
 utils/src/utils_syscalls.o
 
 OBJS_AS_ARGS +=  \
-hpl/core/hpl_core_m23_base.o \
-hpl/systick/hpl_systick.o \
+hpl/src/hpl_core_m23_base.o \
+hpl/src/hpl_dmac.o \
+hpl/src/hpl_gclk.o \
+hpl/src/hpl_init.o \
+hpl/src/hpl_mclk.o \
+hpl/src/hpl_osc32kctrl.o \
+hpl/src/hpl_oscctrl.o \
+hpl/src/hpl_pm.o \
+hpl/src/hpl_systick.o \
 src/hal_atomic.o \
 src/hal_delay.o \
 src/hal_gpio.o \
@@ -97,8 +117,15 @@ utils/src/utils_list.o \
 utils/src/utils_syscalls.o
 
 C_DEPS +=  \
-hpl/core/hpl_core_m23_base.d \
-hpl/systick/hpl_systick.d \
+hpl/src/hpl_core_m23_base.d \
+hpl/src/hpl_dmac.d \
+hpl/src/hpl_gclk.d \
+hpl/src/hpl_init.d \
+hpl/src/hpl_mclk.d \
+hpl/src/hpl_osc32kctrl.d \
+hpl/src/hpl_oscctrl.d \
+hpl/src/hpl_pm.d \
+hpl/src/hpl_systick.d \
 src/hal_atomic.d \
 src/hal_delay.d \
 src/hal_gpio.d \
@@ -111,8 +138,15 @@ utils/src/utils_list.d \
 utils/src/utils_syscalls.d
 
 C_DEPS_AS_ARGS +=  \
-hpl/core/hpl_core_m23_base.d \
-hpl/systick/hpl_systick.d \
+hpl/src/hpl_core_m23_base.d \
+hpl/src/hpl_dmac.d \
+hpl/src/hpl_gclk.d \
+hpl/src/hpl_init.d \
+hpl/src/hpl_mclk.d \
+hpl/src/hpl_osc32kctrl.d \
+hpl/src/hpl_oscctrl.d \
+hpl/src/hpl_pm.d \
+hpl/src/hpl_systick.d \
 src/hal_atomic.d \
 src/hal_delay.d \
 src/hal_gpio.d \
@@ -138,87 +172,136 @@ LINKER_SCRIPT_DEP+=
 
 
 # AVR32/GNU C Compiler
-hpl/core/hpl_core_m23_base.o: ../hpl/core/hpl_core_m23_base.c
+hpl/src/hpl_core_m23_base.o: ../hpl/src/hpl_core_m23_base.c
 	@echo Building file: $<
 	@echo Invoking: ARM/GNU C Compiler : 6.3.1
-	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\arm\arm-gnu-toolchain\bin\arm-none-eabi-gcc.exe$(QUOTE)  -x c -mthumb -D__SAML11E16A__ -DDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\arm\cmsis\5.0.1\CMSIS\Include" -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\SAML11_DFP\1.0.81\include" -I"../utils/include" -I"../include" -I"../hri" -I"../hpl/port" -I"../hpl/systick" -I"../config" -I"../hpl/core"  -O1 -ffunction-sections -mlong-calls -g3 -Wall -mcpu=cortex-m23 -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\arm\arm-gnu-toolchain\bin\arm-none-eabi-gcc.exe$(QUOTE)  -x c -mthumb -D__SAML11E16A__ -DDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\arm\cmsis\5.0.1\CMSIS\Include" -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\SAML11_DFP\1.0.81\include" -I"../utils/include" -I"../include" -I"../hri" -I"../config" -I"../hpl/include"  -O1 -ffunction-sections -mlong-calls -g3 -Wall -mcpu=cortex-m23 -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
 	@echo Finished building: $<
 	
 
-hpl/systick/hpl_systick.o: ../hpl/systick/hpl_systick.c
+hpl/src/hpl_dmac.o: ../hpl/src/hpl_dmac.c
 	@echo Building file: $<
 	@echo Invoking: ARM/GNU C Compiler : 6.3.1
-	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\arm\arm-gnu-toolchain\bin\arm-none-eabi-gcc.exe$(QUOTE)  -x c -mthumb -D__SAML11E16A__ -DDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\arm\cmsis\5.0.1\CMSIS\Include" -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\SAML11_DFP\1.0.81\include" -I"../utils/include" -I"../include" -I"../hri" -I"../hpl/port" -I"../hpl/systick" -I"../config" -I"../hpl/core"  -O1 -ffunction-sections -mlong-calls -g3 -Wall -mcpu=cortex-m23 -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\arm\arm-gnu-toolchain\bin\arm-none-eabi-gcc.exe$(QUOTE)  -x c -mthumb -D__SAML11E16A__ -DDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\arm\cmsis\5.0.1\CMSIS\Include" -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\SAML11_DFP\1.0.81\include" -I"../utils/include" -I"../include" -I"../hri" -I"../config" -I"../hpl/include"  -O1 -ffunction-sections -mlong-calls -g3 -Wall -mcpu=cortex-m23 -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	@echo Finished building: $<
+	
+
+hpl/src/hpl_gclk.o: ../hpl/src/hpl_gclk.c
+	@echo Building file: $<
+	@echo Invoking: ARM/GNU C Compiler : 6.3.1
+	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\arm\arm-gnu-toolchain\bin\arm-none-eabi-gcc.exe$(QUOTE)  -x c -mthumb -D__SAML11E16A__ -DDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\arm\cmsis\5.0.1\CMSIS\Include" -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\SAML11_DFP\1.0.81\include" -I"../utils/include" -I"../include" -I"../hri" -I"../config" -I"../hpl/include"  -O1 -ffunction-sections -mlong-calls -g3 -Wall -mcpu=cortex-m23 -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	@echo Finished building: $<
+	
+
+hpl/src/hpl_init.o: ../hpl/src/hpl_init.c
+	@echo Building file: $<
+	@echo Invoking: ARM/GNU C Compiler : 6.3.1
+	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\arm\arm-gnu-toolchain\bin\arm-none-eabi-gcc.exe$(QUOTE)  -x c -mthumb -D__SAML11E16A__ -DDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\arm\cmsis\5.0.1\CMSIS\Include" -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\SAML11_DFP\1.0.81\include" -I"../utils/include" -I"../include" -I"../hri" -I"../config" -I"../hpl/include"  -O1 -ffunction-sections -mlong-calls -g3 -Wall -mcpu=cortex-m23 -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	@echo Finished building: $<
+	
+
+hpl/src/hpl_mclk.o: ../hpl/src/hpl_mclk.c
+	@echo Building file: $<
+	@echo Invoking: ARM/GNU C Compiler : 6.3.1
+	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\arm\arm-gnu-toolchain\bin\arm-none-eabi-gcc.exe$(QUOTE)  -x c -mthumb -D__SAML11E16A__ -DDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\arm\cmsis\5.0.1\CMSIS\Include" -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\SAML11_DFP\1.0.81\include" -I"../utils/include" -I"../include" -I"../hri" -I"../config" -I"../hpl/include"  -O1 -ffunction-sections -mlong-calls -g3 -Wall -mcpu=cortex-m23 -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	@echo Finished building: $<
+	
+
+hpl/src/hpl_osc32kctrl.o: ../hpl/src/hpl_osc32kctrl.c
+	@echo Building file: $<
+	@echo Invoking: ARM/GNU C Compiler : 6.3.1
+	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\arm\arm-gnu-toolchain\bin\arm-none-eabi-gcc.exe$(QUOTE)  -x c -mthumb -D__SAML11E16A__ -DDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\arm\cmsis\5.0.1\CMSIS\Include" -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\SAML11_DFP\1.0.81\include" -I"../utils/include" -I"../include" -I"../hri" -I"../config" -I"../hpl/include"  -O1 -ffunction-sections -mlong-calls -g3 -Wall -mcpu=cortex-m23 -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	@echo Finished building: $<
+	
+
+hpl/src/hpl_oscctrl.o: ../hpl/src/hpl_oscctrl.c
+	@echo Building file: $<
+	@echo Invoking: ARM/GNU C Compiler : 6.3.1
+	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\arm\arm-gnu-toolchain\bin\arm-none-eabi-gcc.exe$(QUOTE)  -x c -mthumb -D__SAML11E16A__ -DDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\arm\cmsis\5.0.1\CMSIS\Include" -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\SAML11_DFP\1.0.81\include" -I"../utils/include" -I"../include" -I"../hri" -I"../config" -I"../hpl/include"  -O1 -ffunction-sections -mlong-calls -g3 -Wall -mcpu=cortex-m23 -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	@echo Finished building: $<
+	
+
+hpl/src/hpl_pm.o: ../hpl/src/hpl_pm.c
+	@echo Building file: $<
+	@echo Invoking: ARM/GNU C Compiler : 6.3.1
+	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\arm\arm-gnu-toolchain\bin\arm-none-eabi-gcc.exe$(QUOTE)  -x c -mthumb -D__SAML11E16A__ -DDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\arm\cmsis\5.0.1\CMSIS\Include" -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\SAML11_DFP\1.0.81\include" -I"../utils/include" -I"../include" -I"../hri" -I"../config" -I"../hpl/include"  -O1 -ffunction-sections -mlong-calls -g3 -Wall -mcpu=cortex-m23 -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	@echo Finished building: $<
+	
+
+hpl/src/hpl_systick.o: ../hpl/src/hpl_systick.c
+	@echo Building file: $<
+	@echo Invoking: ARM/GNU C Compiler : 6.3.1
+	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\arm\arm-gnu-toolchain\bin\arm-none-eabi-gcc.exe$(QUOTE)  -x c -mthumb -D__SAML11E16A__ -DDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\arm\cmsis\5.0.1\CMSIS\Include" -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\SAML11_DFP\1.0.81\include" -I"../utils/include" -I"../include" -I"../hri" -I"../config" -I"../hpl/include"  -O1 -ffunction-sections -mlong-calls -g3 -Wall -mcpu=cortex-m23 -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
 	@echo Finished building: $<
 	
 
 src/hal_atomic.o: ../src/hal_atomic.c
 	@echo Building file: $<
 	@echo Invoking: ARM/GNU C Compiler : 6.3.1
-	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\arm\arm-gnu-toolchain\bin\arm-none-eabi-gcc.exe$(QUOTE)  -x c -mthumb -D__SAML11E16A__ -DDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\arm\cmsis\5.0.1\CMSIS\Include" -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\SAML11_DFP\1.0.81\include" -I"../utils/include" -I"../include" -I"../hri" -I"../hpl/port" -I"../hpl/systick" -I"../config" -I"../hpl/core"  -O1 -ffunction-sections -mlong-calls -g3 -Wall -mcpu=cortex-m23 -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\arm\arm-gnu-toolchain\bin\arm-none-eabi-gcc.exe$(QUOTE)  -x c -mthumb -D__SAML11E16A__ -DDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\arm\cmsis\5.0.1\CMSIS\Include" -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\SAML11_DFP\1.0.81\include" -I"../utils/include" -I"../include" -I"../hri" -I"../config" -I"../hpl/include"  -O1 -ffunction-sections -mlong-calls -g3 -Wall -mcpu=cortex-m23 -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
 	@echo Finished building: $<
 	
 
 src/hal_delay.o: ../src/hal_delay.c
 	@echo Building file: $<
 	@echo Invoking: ARM/GNU C Compiler : 6.3.1
-	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\arm\arm-gnu-toolchain\bin\arm-none-eabi-gcc.exe$(QUOTE)  -x c -mthumb -D__SAML11E16A__ -DDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\arm\cmsis\5.0.1\CMSIS\Include" -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\SAML11_DFP\1.0.81\include" -I"../utils/include" -I"../include" -I"../hri" -I"../hpl/port" -I"../hpl/systick" -I"../config" -I"../hpl/core"  -O1 -ffunction-sections -mlong-calls -g3 -Wall -mcpu=cortex-m23 -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\arm\arm-gnu-toolchain\bin\arm-none-eabi-gcc.exe$(QUOTE)  -x c -mthumb -D__SAML11E16A__ -DDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\arm\cmsis\5.0.1\CMSIS\Include" -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\SAML11_DFP\1.0.81\include" -I"../utils/include" -I"../include" -I"../hri" -I"../config" -I"../hpl/include"  -O1 -ffunction-sections -mlong-calls -g3 -Wall -mcpu=cortex-m23 -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
 	@echo Finished building: $<
 	
 
 src/hal_gpio.o: ../src/hal_gpio.c
 	@echo Building file: $<
 	@echo Invoking: ARM/GNU C Compiler : 6.3.1
-	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\arm\arm-gnu-toolchain\bin\arm-none-eabi-gcc.exe$(QUOTE)  -x c -mthumb -D__SAML11E16A__ -DDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\arm\cmsis\5.0.1\CMSIS\Include" -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\SAML11_DFP\1.0.81\include" -I"../utils/include" -I"../include" -I"../hri" -I"../hpl/port" -I"../hpl/systick" -I"../config" -I"../hpl/core"  -O1 -ffunction-sections -mlong-calls -g3 -Wall -mcpu=cortex-m23 -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\arm\arm-gnu-toolchain\bin\arm-none-eabi-gcc.exe$(QUOTE)  -x c -mthumb -D__SAML11E16A__ -DDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\arm\cmsis\5.0.1\CMSIS\Include" -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\SAML11_DFP\1.0.81\include" -I"../utils/include" -I"../include" -I"../hri" -I"../config" -I"../hpl/include"  -O1 -ffunction-sections -mlong-calls -g3 -Wall -mcpu=cortex-m23 -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
 	@echo Finished building: $<
 	
 
 src/hal_init.o: ../src/hal_init.c
 	@echo Building file: $<
 	@echo Invoking: ARM/GNU C Compiler : 6.3.1
-	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\arm\arm-gnu-toolchain\bin\arm-none-eabi-gcc.exe$(QUOTE)  -x c -mthumb -D__SAML11E16A__ -DDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\arm\cmsis\5.0.1\CMSIS\Include" -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\SAML11_DFP\1.0.81\include" -I"../utils/include" -I"../include" -I"../hri" -I"../hpl/port" -I"../hpl/systick" -I"../config" -I"../hpl/core"  -O1 -ffunction-sections -mlong-calls -g3 -Wall -mcpu=cortex-m23 -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\arm\arm-gnu-toolchain\bin\arm-none-eabi-gcc.exe$(QUOTE)  -x c -mthumb -D__SAML11E16A__ -DDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\arm\cmsis\5.0.1\CMSIS\Include" -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\SAML11_DFP\1.0.81\include" -I"../utils/include" -I"../include" -I"../hri" -I"../config" -I"../hpl/include"  -O1 -ffunction-sections -mlong-calls -g3 -Wall -mcpu=cortex-m23 -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
 	@echo Finished building: $<
 	
 
 src/hal_io.o: ../src/hal_io.c
 	@echo Building file: $<
 	@echo Invoking: ARM/GNU C Compiler : 6.3.1
-	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\arm\arm-gnu-toolchain\bin\arm-none-eabi-gcc.exe$(QUOTE)  -x c -mthumb -D__SAML11E16A__ -DDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\arm\cmsis\5.0.1\CMSIS\Include" -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\SAML11_DFP\1.0.81\include" -I"../utils/include" -I"../include" -I"../hri" -I"../hpl/port" -I"../hpl/systick" -I"../config" -I"../hpl/core"  -O1 -ffunction-sections -mlong-calls -g3 -Wall -mcpu=cortex-m23 -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\arm\arm-gnu-toolchain\bin\arm-none-eabi-gcc.exe$(QUOTE)  -x c -mthumb -D__SAML11E16A__ -DDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\arm\cmsis\5.0.1\CMSIS\Include" -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\SAML11_DFP\1.0.81\include" -I"../utils/include" -I"../include" -I"../hri" -I"../config" -I"../hpl/include"  -O1 -ffunction-sections -mlong-calls -g3 -Wall -mcpu=cortex-m23 -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
 	@echo Finished building: $<
 	
 
 src/hal_sleep.o: ../src/hal_sleep.c
 	@echo Building file: $<
 	@echo Invoking: ARM/GNU C Compiler : 6.3.1
-	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\arm\arm-gnu-toolchain\bin\arm-none-eabi-gcc.exe$(QUOTE)  -x c -mthumb -D__SAML11E16A__ -DDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\arm\cmsis\5.0.1\CMSIS\Include" -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\SAML11_DFP\1.0.81\include" -I"../utils/include" -I"../include" -I"../hri" -I"../hpl/port" -I"../hpl/systick" -I"../config" -I"../hpl/core"  -O1 -ffunction-sections -mlong-calls -g3 -Wall -mcpu=cortex-m23 -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\arm\arm-gnu-toolchain\bin\arm-none-eabi-gcc.exe$(QUOTE)  -x c -mthumb -D__SAML11E16A__ -DDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\arm\cmsis\5.0.1\CMSIS\Include" -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\SAML11_DFP\1.0.81\include" -I"../utils/include" -I"../include" -I"../hri" -I"../config" -I"../hpl/include"  -O1 -ffunction-sections -mlong-calls -g3 -Wall -mcpu=cortex-m23 -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
 	@echo Finished building: $<
 	
 
 utils/src/utils_assert.o: ../utils/src/utils_assert.c
 	@echo Building file: $<
 	@echo Invoking: ARM/GNU C Compiler : 6.3.1
-	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\arm\arm-gnu-toolchain\bin\arm-none-eabi-gcc.exe$(QUOTE)  -x c -mthumb -D__SAML11E16A__ -DDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\arm\cmsis\5.0.1\CMSIS\Include" -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\SAML11_DFP\1.0.81\include" -I"../utils/include" -I"../include" -I"../hri" -I"../hpl/port" -I"../hpl/systick" -I"../config" -I"../hpl/core"  -O1 -ffunction-sections -mlong-calls -g3 -Wall -mcpu=cortex-m23 -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\arm\arm-gnu-toolchain\bin\arm-none-eabi-gcc.exe$(QUOTE)  -x c -mthumb -D__SAML11E16A__ -DDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\arm\cmsis\5.0.1\CMSIS\Include" -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\SAML11_DFP\1.0.81\include" -I"../utils/include" -I"../include" -I"../hri" -I"../config" -I"../hpl/include"  -O1 -ffunction-sections -mlong-calls -g3 -Wall -mcpu=cortex-m23 -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
 	@echo Finished building: $<
 	
 
 utils/src/utils_event.o: ../utils/src/utils_event.c
 	@echo Building file: $<
 	@echo Invoking: ARM/GNU C Compiler : 6.3.1
-	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\arm\arm-gnu-toolchain\bin\arm-none-eabi-gcc.exe$(QUOTE)  -x c -mthumb -D__SAML11E16A__ -DDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\arm\cmsis\5.0.1\CMSIS\Include" -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\SAML11_DFP\1.0.81\include" -I"../utils/include" -I"../include" -I"../hri" -I"../hpl/port" -I"../hpl/systick" -I"../config" -I"../hpl/core"  -O1 -ffunction-sections -mlong-calls -g3 -Wall -mcpu=cortex-m23 -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\arm\arm-gnu-toolchain\bin\arm-none-eabi-gcc.exe$(QUOTE)  -x c -mthumb -D__SAML11E16A__ -DDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\arm\cmsis\5.0.1\CMSIS\Include" -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\SAML11_DFP\1.0.81\include" -I"../utils/include" -I"../include" -I"../hri" -I"../config" -I"../hpl/include"  -O1 -ffunction-sections -mlong-calls -g3 -Wall -mcpu=cortex-m23 -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
 	@echo Finished building: $<
 	
 
 utils/src/utils_list.o: ../utils/src/utils_list.c
 	@echo Building file: $<
 	@echo Invoking: ARM/GNU C Compiler : 6.3.1
-	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\arm\arm-gnu-toolchain\bin\arm-none-eabi-gcc.exe$(QUOTE)  -x c -mthumb -D__SAML11E16A__ -DDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\arm\cmsis\5.0.1\CMSIS\Include" -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\SAML11_DFP\1.0.81\include" -I"../utils/include" -I"../include" -I"../hri" -I"../hpl/port" -I"../hpl/systick" -I"../config" -I"../hpl/core"  -O1 -ffunction-sections -mlong-calls -g3 -Wall -mcpu=cortex-m23 -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\arm\arm-gnu-toolchain\bin\arm-none-eabi-gcc.exe$(QUOTE)  -x c -mthumb -D__SAML11E16A__ -DDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\arm\cmsis\5.0.1\CMSIS\Include" -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\SAML11_DFP\1.0.81\include" -I"../utils/include" -I"../include" -I"../hri" -I"../config" -I"../hpl/include"  -O1 -ffunction-sections -mlong-calls -g3 -Wall -mcpu=cortex-m23 -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
 	@echo Finished building: $<
 	
 
 utils/src/utils_syscalls.o: ../utils/src/utils_syscalls.c
 	@echo Building file: $<
 	@echo Invoking: ARM/GNU C Compiler : 6.3.1
-	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\arm\arm-gnu-toolchain\bin\arm-none-eabi-gcc.exe$(QUOTE)  -x c -mthumb -D__SAML11E16A__ -DDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\arm\cmsis\5.0.1\CMSIS\Include" -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\SAML11_DFP\1.0.81\include" -I"../utils/include" -I"../include" -I"../hri" -I"../hpl/port" -I"../hpl/systick" -I"../config" -I"../hpl/core"  -O1 -ffunction-sections -mlong-calls -g3 -Wall -mcpu=cortex-m23 -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\arm\arm-gnu-toolchain\bin\arm-none-eabi-gcc.exe$(QUOTE)  -x c -mthumb -D__SAML11E16A__ -DDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\arm\cmsis\5.0.1\CMSIS\Include" -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\SAML11_DFP\1.0.81\include" -I"../utils/include" -I"../include" -I"../hri" -I"../config" -I"../hpl/include"  -O1 -ffunction-sections -mlong-calls -g3 -Wall -mcpu=cortex-m23 -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
 	@echo Finished building: $<
 	
 

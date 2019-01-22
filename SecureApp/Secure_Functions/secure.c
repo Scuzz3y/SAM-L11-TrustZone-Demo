@@ -29,3 +29,8 @@ void blink_led_10_s(void)
 	gpio_toggle_pin_level(LED0);
 }
 
+int add_3(int x)
+{
+	return x + 3;
+}
+

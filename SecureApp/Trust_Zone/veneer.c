@@ -26,3 +26,8 @@ void __attribute__((cmse_nonsecure_entry)) secure_blink_led_10_s(void)
 	blink_led_10_s();
 }
 
+int __attribute__((cmse_nonsecure_entry)) secure_add_3(int x)
+{
+	return add_3(x);
+}
+

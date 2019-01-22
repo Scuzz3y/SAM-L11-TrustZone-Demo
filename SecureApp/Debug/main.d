@@ -1,6 +1,8 @@
-main.d main.o: .././main.c \
- C:\Program\ Files\ (x86)\Atmel\Studio\7.0\Packs\atmel\SAML11_DFP\1.0.81\include/sam.h \
- C:\Program\ Files\ (x86)\Atmel\Studio\7.0\Packs\atmel\SAML11_DFP\1.0.81\include/saml11e16a.h \
+main.d main.o: .././main.c .././atmel_start.h .././driver_init.h \
+ .././atmel_start_pins.h ../../SAM\ 11\ -\ HAL/include/hal_gpio.h \
+ ../../SAM\ 11\ -\ HAL/include/hpl_gpio.h \
+ ../../SAM\ 11\ -\ HAL/utils/include/compiler.h \
+ c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\arm\arm-gnu-toolchain\lib\gcc\arm-none-eabi\6.3.1\include\stddef.h \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\arm\arm-gnu-toolchain\lib\gcc\arm-none-eabi\6.3.1\include\stdint.h \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\arm\arm-gnu-toolchain\arm-none-eabi\include\stdint.h \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\arm\arm-gnu-toolchain\arm-none-eabi\include\machine\_default_types.h \
@@ -8,6 +10,10 @@ main.d main.o: .././main.c \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\arm\arm-gnu-toolchain\arm-none-eabi\include\_newlib_version.h \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\arm\arm-gnu-toolchain\arm-none-eabi\include\sys\_intsup.h \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\arm\arm-gnu-toolchain\arm-none-eabi\include\sys\_stdint.h \
+ c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\arm\arm-gnu-toolchain\lib\gcc\arm-none-eabi\6.3.1\include\stdbool.h \
+ ../../SAM\ 11\ -\ HAL/utils/include/parts.h \
+ C:\Program\ Files\ (x86)\Atmel\Studio\7.0\Packs\atmel\SAML11_DFP\1.0.81\include/sam.h \
+ C:\Program\ Files\ (x86)\Atmel\Studio\7.0\Packs\atmel\SAML11_DFP\1.0.81\include/saml11e16a.h \
  C:\Program\ Files\ (x86)\Atmel\Studio\7.0\Packs\arm\cmsis\5.0.1\CMSIS\Include/core_cm23.h \
  C:\Program\ Files\ (x86)\Atmel\Studio\7.0\Packs\arm\cmsis\5.0.1\CMSIS\Include/cmsis_compiler.h \
  C:\Program\ Files\ (x86)\Atmel\Studio\7.0\Packs\arm\cmsis\5.0.1\CMSIS\Include/cmsis_gcc.h \
@@ -72,11 +78,67 @@ main.d main.o: .././main.c \
  C:\Program\ Files\ (x86)\Atmel\Studio\7.0\Packs\atmel\SAML11_DFP\1.0.81\include/instance/tram.h \
  C:\Program\ Files\ (x86)\Atmel\Studio\7.0\Packs\atmel\SAML11_DFP\1.0.81\include/instance/trng.h \
  C:\Program\ Files\ (x86)\Atmel\Studio\7.0\Packs\atmel\SAML11_DFP\1.0.81\include/instance/wdt.h \
- C:\Program\ Files\ (x86)\Atmel\Studio\7.0\Packs\atmel\SAML11_DFP\1.0.81\include/pio/saml11e16a.h
+ C:\Program\ Files\ (x86)\Atmel\Studio\7.0\Packs\atmel\SAML11_DFP\1.0.81\include/pio/saml11e16a.h \
+ ../../SAM\ 11\ -\ HAL/hri/hri_l11.h \
+ ../../SAM\ 11\ -\ HAL/hri/hri_ac_l11.h \
+ ../../SAM\ 11\ -\ HAL/include/hal_atomic.h \
+ ../../SAM\ 11\ -\ HAL/hri/hri_adc_l11.h \
+ ../../SAM\ 11\ -\ HAL/hri/hri_ccl_l11.h \
+ ../../SAM\ 11\ -\ HAL/hri/hri_dac_l11.h \
+ ../../SAM\ 11\ -\ HAL/hri/hri_dmac_l11.h \
+ ../../SAM\ 11\ -\ HAL/hri/hri_dsu_l11.h \
+ ../../SAM\ 11\ -\ HAL/hri/hri_eic_l11.h \
+ ../../SAM\ 11\ -\ HAL/hri/hri_evsys_l11.h \
+ ../../SAM\ 11\ -\ HAL/hri/hri_freqm_l11.h \
+ ../../SAM\ 11\ -\ HAL/hri/hri_gclk_l11.h \
+ ../../SAM\ 11\ -\ HAL/hri/hri_mclk_l11.h \
+ ../../SAM\ 11\ -\ HAL/hri/hri_nvic_l11.h \
+ ../../SAM\ 11\ -\ HAL/hri/hri_nvmctrl_l11.h \
+ ../../SAM\ 11\ -\ HAL/hri/hri_opamp_l11.h \
+ ../../SAM\ 11\ -\ HAL/hri/hri_osc32kctrl_l11.h \
+ ../../SAM\ 11\ -\ HAL/hri/hri_oscctrl_l11.h \
+ ../../SAM\ 11\ -\ HAL/hri/hri_pac_l11.h \
+ ../../SAM\ 11\ -\ HAL/hri/hri_pm_l11.h \
+ ../../SAM\ 11\ -\ HAL/hri/hri_port_l11.h \
+ ../../SAM\ 11\ -\ HAL/hri/hri_rstc_l11.h \
+ ../../SAM\ 11\ -\ HAL/hri/hri_rtc_l11.h \
+ ../../SAM\ 11\ -\ HAL/hri/hri_sercom_l11.h \
+ ../../SAM\ 11\ -\ HAL/hri/hri_supc_l11.h \
+ ../../SAM\ 11\ -\ HAL/hri/hri_systemcontrol_l11.h \
+ ../../SAM\ 11\ -\ HAL/hri/hri_systick_l11.h \
+ ../../SAM\ 11\ -\ HAL/hri/hri_tc_l11.h \
+ ../../SAM\ 11\ -\ HAL/hri/hri_tram_l11.h \
+ ../../SAM\ 11\ -\ HAL/hri/hri_trng_l11.h \
+ ../../SAM\ 11\ -\ HAL/hri/hri_wdt_l11.h \
+ ../../SAM\ 11\ -\ HAL/utils/include/err_codes.h \
+ ../../SAM\ 11\ -\ HAL/hpl/include/hpl_gpio_base.h \
+ ../../SAM\ 11\ -\ HAL/utils/include/utils_assert.h \
+ ../../SAM\ 11\ -\ HAL/include/hal_delay.h \
+ ../../SAM\ 11\ -\ HAL/include/hpl_irq.h \
+ ../../SAM\ 11\ -\ HAL/include/hpl_reset.h \
+ ../../SAM\ 11\ -\ HAL/include/hpl_sleep.h \
+ ../../SAM\ 11\ -\ HAL/include/hal_init.h \
+ ../../SAM\ 11\ -\ HAL/include/hpl_init.h \
+ ../../SAM\ 11\ -\ HAL/include/hal_io.h \
+ ../../SAM\ 11\ -\ HAL/include/hal_sleep.h \
+ ../../SAM\ 11\ -\ HAL/hpl/include/hpl_crya.h \
+ .././Trust_Zone/trustzone_manager.h \
+ ../../SAM\ 11\ -\ HAL/config/trustzone_config.h \
+ c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\arm\arm-gnu-toolchain\lib\gcc\arm-none-eabi\6.3.1\include\arm_cmse.h
 
-C:\Program\ Files\ (x86)\Atmel\Studio\7.0\Packs\atmel\SAML11_DFP\1.0.81\include/sam.h:
+.././atmel_start.h:
 
-C:\Program\ Files\ (x86)\Atmel\Studio\7.0\Packs\atmel\SAML11_DFP\1.0.81\include/saml11e16a.h:
+.././driver_init.h:
+
+.././atmel_start_pins.h:
+
+../../SAM\ 11\ -\ HAL/include/hal_gpio.h:
+
+../../SAM\ 11\ -\ HAL/include/hpl_gpio.h:
+
+../../SAM\ 11\ -\ HAL/utils/include/compiler.h:
+
+c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\arm\arm-gnu-toolchain\lib\gcc\arm-none-eabi\6.3.1\include\stddef.h:
 
 c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\arm\arm-gnu-toolchain\lib\gcc\arm-none-eabi\6.3.1\include\stdint.h:
 
@@ -91,6 +153,14 @@ c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\arm\arm-gnu-toolchain\arm-no
 c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\arm\arm-gnu-toolchain\arm-none-eabi\include\sys\_intsup.h:
 
 c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\arm\arm-gnu-toolchain\arm-none-eabi\include\sys\_stdint.h:
+
+c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\arm\arm-gnu-toolchain\lib\gcc\arm-none-eabi\6.3.1\include\stdbool.h:
+
+../../SAM\ 11\ -\ HAL/utils/include/parts.h:
+
+C:\Program\ Files\ (x86)\Atmel\Studio\7.0\Packs\atmel\SAML11_DFP\1.0.81\include/sam.h:
+
+C:\Program\ Files\ (x86)\Atmel\Studio\7.0\Packs\atmel\SAML11_DFP\1.0.81\include/saml11e16a.h:
 
 C:\Program\ Files\ (x86)\Atmel\Studio\7.0\Packs\arm\cmsis\5.0.1\CMSIS\Include/core_cm23.h:
 
@@ -221,3 +291,95 @@ C:\Program\ Files\ (x86)\Atmel\Studio\7.0\Packs\atmel\SAML11_DFP\1.0.81\include/
 C:\Program\ Files\ (x86)\Atmel\Studio\7.0\Packs\atmel\SAML11_DFP\1.0.81\include/instance/wdt.h:
 
 C:\Program\ Files\ (x86)\Atmel\Studio\7.0\Packs\atmel\SAML11_DFP\1.0.81\include/pio/saml11e16a.h:
+
+../../SAM\ 11\ -\ HAL/hri/hri_l11.h:
+
+../../SAM\ 11\ -\ HAL/hri/hri_ac_l11.h:
+
+../../SAM\ 11\ -\ HAL/include/hal_atomic.h:
+
+../../SAM\ 11\ -\ HAL/hri/hri_adc_l11.h:
+
+../../SAM\ 11\ -\ HAL/hri/hri_ccl_l11.h:
+
+../../SAM\ 11\ -\ HAL/hri/hri_dac_l11.h:
+
+../../SAM\ 11\ -\ HAL/hri/hri_dmac_l11.h:
+
+../../SAM\ 11\ -\ HAL/hri/hri_dsu_l11.h:
+
+../../SAM\ 11\ -\ HAL/hri/hri_eic_l11.h:
+
+../../SAM\ 11\ -\ HAL/hri/hri_evsys_l11.h:
+
+../../SAM\ 11\ -\ HAL/hri/hri_freqm_l11.h:
+
+../../SAM\ 11\ -\ HAL/hri/hri_gclk_l11.h:
+
+../../SAM\ 11\ -\ HAL/hri/hri_mclk_l11.h:
+
+../../SAM\ 11\ -\ HAL/hri/hri_nvic_l11.h:
+
+../../SAM\ 11\ -\ HAL/hri/hri_nvmctrl_l11.h:
+
+../../SAM\ 11\ -\ HAL/hri/hri_opamp_l11.h:
+
+../../SAM\ 11\ -\ HAL/hri/hri_osc32kctrl_l11.h:
+
+../../SAM\ 11\ -\ HAL/hri/hri_oscctrl_l11.h:
+
+../../SAM\ 11\ -\ HAL/hri/hri_pac_l11.h:
+
+../../SAM\ 11\ -\ HAL/hri/hri_pm_l11.h:
+
+../../SAM\ 11\ -\ HAL/hri/hri_port_l11.h:
+
+../../SAM\ 11\ -\ HAL/hri/hri_rstc_l11.h:
+
+../../SAM\ 11\ -\ HAL/hri/hri_rtc_l11.h:
+
+../../SAM\ 11\ -\ HAL/hri/hri_sercom_l11.h:
+
+../../SAM\ 11\ -\ HAL/hri/hri_supc_l11.h:
+
+../../SAM\ 11\ -\ HAL/hri/hri_systemcontrol_l11.h:
+
+../../SAM\ 11\ -\ HAL/hri/hri_systick_l11.h:
+
+../../SAM\ 11\ -\ HAL/hri/hri_tc_l11.h:
+
+../../SAM\ 11\ -\ HAL/hri/hri_tram_l11.h:
+
+../../SAM\ 11\ -\ HAL/hri/hri_trng_l11.h:
+
+../../SAM\ 11\ -\ HAL/hri/hri_wdt_l11.h:
+
+../../SAM\ 11\ -\ HAL/utils/include/err_codes.h:
+
+../../SAM\ 11\ -\ HAL/hpl/include/hpl_gpio_base.h:
+
+../../SAM\ 11\ -\ HAL/utils/include/utils_assert.h:
+
+../../SAM\ 11\ -\ HAL/include/hal_delay.h:
+
+../../SAM\ 11\ -\ HAL/include/hpl_irq.h:
+
+../../SAM\ 11\ -\ HAL/include/hpl_reset.h:
+
+../../SAM\ 11\ -\ HAL/include/hpl_sleep.h:
+
+../../SAM\ 11\ -\ HAL/include/hal_init.h:
+
+../../SAM\ 11\ -\ HAL/include/hpl_init.h:
+
+../../SAM\ 11\ -\ HAL/include/hal_io.h:
+
+../../SAM\ 11\ -\ HAL/include/hal_sleep.h:
+
+../../SAM\ 11\ -\ HAL/hpl/include/hpl_crya.h:
+
+.././Trust_Zone/trustzone_manager.h:
+
+../../SAM\ 11\ -\ HAL/config/trustzone_config.h:
+
+c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\arm\arm-gnu-toolchain\lib\gcc\arm-none-eabi\6.3.1\include\arm_cmse.h:

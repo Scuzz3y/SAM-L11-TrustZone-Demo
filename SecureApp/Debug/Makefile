@@ -40,8 +40,10 @@ SUBDIRS :=  \
 
 # Add inputs and outputs from these tool invocations to the build variables 
 C_SRCS +=  \
+../atmel_start.c \
 ../Device_Startup/startup_saml11e16a.c \
 ../Device_Startup/system_saml11e16a.c \
+../driver_init.c \
 ../main.c \
 ../Secure_Functions/secure.c \
 ../Trust_Zone/veneer.c
@@ -54,29 +56,37 @@ ASM_SRCS +=
 
 
 OBJS +=  \
+atmel_start.o \
 Device_Startup/startup_saml11e16a.o \
 Device_Startup/system_saml11e16a.o \
+driver_init.o \
 main.o \
 Secure_Functions/secure.o \
 Trust_Zone/veneer.o
 
 OBJS_AS_ARGS +=  \
+atmel_start.o \
 Device_Startup/startup_saml11e16a.o \
 Device_Startup/system_saml11e16a.o \
+driver_init.o \
 main.o \
 Secure_Functions/secure.o \
 Trust_Zone/veneer.o
 
 C_DEPS +=  \
+atmel_start.d \
 Device_Startup/startup_saml11e16a.d \
 Device_Startup/system_saml11e16a.d \
+driver_init.d \
 main.d \
 Secure_Functions/secure.d \
 Trust_Zone/veneer.d
 
 C_DEPS_AS_ARGS +=  \
+atmel_start.d \
 Device_Startup/startup_saml11e16a.d \
 Device_Startup/system_saml11e16a.d \
+driver_init.d \
 main.d \
 Secure_Functions/secure.d \
 Trust_Zone/veneer.d
@@ -98,38 +108,52 @@ LINKER_SCRIPT_DEP+=  \
 
 
 # AVR32/GNU C Compiler
+./atmel_start.o: .././atmel_start.c
+	@echo Building file: $<
+	@echo Invoking: ARM/GNU C Compiler : 6.3.1
+	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\arm\arm-gnu-toolchain\bin\arm-none-eabi-gcc.exe$(QUOTE)  -x c -mthumb -D__SAML11E16A__ -DDEBUG  -I"../Secure_Functions" -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\arm\cmsis\5.0.1\CMSIS\Include" -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\SAML11_DFP\1.0.81\include" -I"../Trust_Zone" -I"../../SAM 11 - HAL/include" -I"../../SAM 11 - HAL/utils/include" -I"../../SAM 11 - HAL/hri" -I".." -I"../../SAM 11 - HAL/config" -I"../../SAM 11 - HAL/hpl/include"  -O1 -ffunction-sections -mlong-calls -g3 -Wall -mcpu=cortex-m23 -c -std=gnu99 -mcmse -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	@echo Finished building: $<
+	
+
 Device_Startup/startup_saml11e16a.o: ../Device_Startup/startup_saml11e16a.c
 	@echo Building file: $<
 	@echo Invoking: ARM/GNU C Compiler : 6.3.1
-	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\arm\arm-gnu-toolchain\bin\arm-none-eabi-gcc.exe$(QUOTE)  -x c -mthumb -D__SAML11E16A__ -DDEBUG  -I"../Secure_Functions" -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\arm\cmsis\5.0.1\CMSIS\Include" -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\SAML11_DFP\1.0.81\include" -I"../Trust_Zone" -I"../../SAM 11 - HAL/include" -I"../../SAM 11 - HAL/utils/include" -I"../../SAM 11 - HAL/hri" -I"../../SAM 11 - HAL/hpl/port" -I"../../SAM 11 - HAL/hpl/systick"  -O1 -ffunction-sections -mlong-calls -g3 -Wall -mcpu=cortex-m23 -c -std=gnu99 -mcmse -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\arm\arm-gnu-toolchain\bin\arm-none-eabi-gcc.exe$(QUOTE)  -x c -mthumb -D__SAML11E16A__ -DDEBUG  -I"../Secure_Functions" -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\arm\cmsis\5.0.1\CMSIS\Include" -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\SAML11_DFP\1.0.81\include" -I"../Trust_Zone" -I"../../SAM 11 - HAL/include" -I"../../SAM 11 - HAL/utils/include" -I"../../SAM 11 - HAL/hri" -I".." -I"../../SAM 11 - HAL/config" -I"../../SAM 11 - HAL/hpl/include"  -O1 -ffunction-sections -mlong-calls -g3 -Wall -mcpu=cortex-m23 -c -std=gnu99 -mcmse -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
 	@echo Finished building: $<
 	
 
 Device_Startup/system_saml11e16a.o: ../Device_Startup/system_saml11e16a.c
 	@echo Building file: $<
 	@echo Invoking: ARM/GNU C Compiler : 6.3.1
-	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\arm\arm-gnu-toolchain\bin\arm-none-eabi-gcc.exe$(QUOTE)  -x c -mthumb -D__SAML11E16A__ -DDEBUG  -I"../Secure_Functions" -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\arm\cmsis\5.0.1\CMSIS\Include" -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\SAML11_DFP\1.0.81\include" -I"../Trust_Zone" -I"../../SAM 11 - HAL/include" -I"../../SAM 11 - HAL/utils/include" -I"../../SAM 11 - HAL/hri" -I"../../SAM 11 - HAL/hpl/port" -I"../../SAM 11 - HAL/hpl/systick"  -O1 -ffunction-sections -mlong-calls -g3 -Wall -mcpu=cortex-m23 -c -std=gnu99 -mcmse -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\arm\arm-gnu-toolchain\bin\arm-none-eabi-gcc.exe$(QUOTE)  -x c -mthumb -D__SAML11E16A__ -DDEBUG  -I"../Secure_Functions" -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\arm\cmsis\5.0.1\CMSIS\Include" -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\SAML11_DFP\1.0.81\include" -I"../Trust_Zone" -I"../../SAM 11 - HAL/include" -I"../../SAM 11 - HAL/utils/include" -I"../../SAM 11 - HAL/hri" -I".." -I"../../SAM 11 - HAL/config" -I"../../SAM 11 - HAL/hpl/include"  -O1 -ffunction-sections -mlong-calls -g3 -Wall -mcpu=cortex-m23 -c -std=gnu99 -mcmse -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	@echo Finished building: $<
+	
+
+./driver_init.o: .././driver_init.c
+	@echo Building file: $<
+	@echo Invoking: ARM/GNU C Compiler : 6.3.1
+	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\arm\arm-gnu-toolchain\bin\arm-none-eabi-gcc.exe$(QUOTE)  -x c -mthumb -D__SAML11E16A__ -DDEBUG  -I"../Secure_Functions" -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\arm\cmsis\5.0.1\CMSIS\Include" -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\SAML11_DFP\1.0.81\include" -I"../Trust_Zone" -I"../../SAM 11 - HAL/include" -I"../../SAM 11 - HAL/utils/include" -I"../../SAM 11 - HAL/hri" -I".." -I"../../SAM 11 - HAL/config" -I"../../SAM 11 - HAL/hpl/include"  -O1 -ffunction-sections -mlong-calls -g3 -Wall -mcpu=cortex-m23 -c -std=gnu99 -mcmse -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
 	@echo Finished building: $<
 	
 
 ./main.o: .././main.c
 	@echo Building file: $<
 	@echo Invoking: ARM/GNU C Compiler : 6.3.1
-	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\arm\arm-gnu-toolchain\bin\arm-none-eabi-gcc.exe$(QUOTE)  -x c -mthumb -D__SAML11E16A__ -DDEBUG  -I"../Secure_Functions" -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\arm\cmsis\5.0.1\CMSIS\Include" -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\SAML11_DFP\1.0.81\include" -I"../Trust_Zone" -I"../../SAM 11 - HAL/include" -I"../../SAM 11 - HAL/utils/include" -I"../../SAM 11 - HAL/hri" -I"../../SAM 11 - HAL/hpl/port" -I"../../SAM 11 - HAL/hpl/systick"  -O1 -ffunction-sections -mlong-calls -g3 -Wall -mcpu=cortex-m23 -c -std=gnu99 -mcmse -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\arm\arm-gnu-toolchain\bin\arm-none-eabi-gcc.exe$(QUOTE)  -x c -mthumb -D__SAML11E16A__ -DDEBUG  -I"../Secure_Functions" -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\arm\cmsis\5.0.1\CMSIS\Include" -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\SAML11_DFP\1.0.81\include" -I"../Trust_Zone" -I"../../SAM 11 - HAL/include" -I"../../SAM 11 - HAL/utils/include" -I"../../SAM 11 - HAL/hri" -I".." -I"../../SAM 11 - HAL/config" -I"../../SAM 11 - HAL/hpl/include"  -O1 -ffunction-sections -mlong-calls -g3 -Wall -mcpu=cortex-m23 -c -std=gnu99 -mcmse -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
 	@echo Finished building: $<
 	
 
 Secure_Functions/secure.o: ../Secure_Functions/secure.c
 	@echo Building file: $<
 	@echo Invoking: ARM/GNU C Compiler : 6.3.1
-	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\arm\arm-gnu-toolchain\bin\arm-none-eabi-gcc.exe$(QUOTE)  -x c -mthumb -D__SAML11E16A__ -DDEBUG  -I"../Secure_Functions" -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\arm\cmsis\5.0.1\CMSIS\Include" -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\SAML11_DFP\1.0.81\include" -I"../Trust_Zone" -I"../../SAM 11 - HAL/include" -I"../../SAM 11 - HAL/utils/include" -I"../../SAM 11 - HAL/hri" -I"../../SAM 11 - HAL/hpl/port" -I"../../SAM 11 - HAL/hpl/systick"  -O1 -ffunction-sections -mlong-calls -g3 -Wall -mcpu=cortex-m23 -c -std=gnu99 -mcmse -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\arm\arm-gnu-toolchain\bin\arm-none-eabi-gcc.exe$(QUOTE)  -x c -mthumb -D__SAML11E16A__ -DDEBUG  -I"../Secure_Functions" -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\arm\cmsis\5.0.1\CMSIS\Include" -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\SAML11_DFP\1.0.81\include" -I"../Trust_Zone" -I"../../SAM 11 - HAL/include" -I"../../SAM 11 - HAL/utils/include" -I"../../SAM 11 - HAL/hri" -I".." -I"../../SAM 11 - HAL/config" -I"../../SAM 11 - HAL/hpl/include"  -O1 -ffunction-sections -mlong-calls -g3 -Wall -mcpu=cortex-m23 -c -std=gnu99 -mcmse -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
 	@echo Finished building: $<
 	
 
 Trust_Zone/veneer.o: ../Trust_Zone/veneer.c
 	@echo Building file: $<
 	@echo Invoking: ARM/GNU C Compiler : 6.3.1
-	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\arm\arm-gnu-toolchain\bin\arm-none-eabi-gcc.exe$(QUOTE)  -x c -mthumb -D__SAML11E16A__ -DDEBUG  -I"../Secure_Functions" -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\arm\cmsis\5.0.1\CMSIS\Include" -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\SAML11_DFP\1.0.81\include" -I"../Trust_Zone" -I"../../SAM 11 - HAL/include" -I"../../SAM 11 - HAL/utils/include" -I"../../SAM 11 - HAL/hri" -I"../../SAM 11 - HAL/hpl/port" -I"../../SAM 11 - HAL/hpl/systick"  -O1 -ffunction-sections -mlong-calls -g3 -Wall -mcpu=cortex-m23 -c -std=gnu99 -mcmse -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\arm\arm-gnu-toolchain\bin\arm-none-eabi-gcc.exe$(QUOTE)  -x c -mthumb -D__SAML11E16A__ -DDEBUG  -I"../Secure_Functions" -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\arm\cmsis\5.0.1\CMSIS\Include" -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\SAML11_DFP\1.0.81\include" -I"../Trust_Zone" -I"../../SAM 11 - HAL/include" -I"../../SAM 11 - HAL/utils/include" -I"../../SAM 11 - HAL/hri" -I".." -I"../../SAM 11 - HAL/config" -I"../../SAM 11 - HAL/hpl/include"  -O1 -ffunction-sections -mlong-calls -g3 -Wall -mcpu=cortex-m23 -c -std=gnu99 -mcmse -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
 	@echo Finished building: $<
 	
 

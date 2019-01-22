@@ -3,9 +3,9 @@ NonSecureApp.elf:     file format elf32-littlearm
 
 Sections:
 Idx Name          Size      VMA       LMA       File off  Algn
-  0 .text         000002a8  00008000  00008000  00008000  2**2
+  0 .text         000002b4  00008000  00008000  00008000  2**2
                   CONTENTS, ALLOC, LOAD, READONLY, CODE
-  1 .relocate     00000000  20002000  20002000  000082a8  2**0
+  1 .relocate     00000000  20002000  20002000  000082b4  2**0
                   CONTENTS
   2 .bss          0000001c  20002000  20002000  00012000  2**2
                   ALLOC
@@ -13,27 +13,27 @@ Idx Name          Size      VMA       LMA       File off  Algn
                   ALLOC
   4 .stack        00000400  20002220  20002220  00012000  2**0
                   ALLOC
-  5 .ARM.attributes 0000002c  00000000  00000000  000082a8  2**0
+  5 .ARM.attributes 0000002c  00000000  00000000  000082b4  2**0
                   CONTENTS, READONLY
-  6 .comment      00000059  00000000  00000000  000082d4  2**0
+  6 .comment      00000059  00000000  00000000  000082e0  2**0
                   CONTENTS, READONLY
-  7 .debug_info   000006c7  00000000  00000000  0000832d  2**0
+  7 .debug_info   000006e8  00000000  00000000  00008339  2**0
                   CONTENTS, READONLY, DEBUGGING
-  8 .debug_abbrev 000001d5  00000000  00000000  000089f4  2**0
+  8 .debug_abbrev 000001eb  00000000  00000000  00008a21  2**0
                   CONTENTS, READONLY, DEBUGGING
-  9 .debug_loc    00000060  00000000  00000000  00008bc9  2**0
+  9 .debug_loc    0000006c  00000000  00000000  00008c0c  2**0
                   CONTENTS, READONLY, DEBUGGING
- 10 .debug_aranges 00000048  00000000  00000000  00008c29  2**0
+ 10 .debug_aranges 00000048  00000000  00000000  00008c78  2**0
                   CONTENTS, READONLY, DEBUGGING
- 11 .debug_ranges 00000028  00000000  00000000  00008c71  2**0
+ 11 .debug_ranges 00000028  00000000  00000000  00008cc0  2**0
                   CONTENTS, READONLY, DEBUGGING
- 12 .debug_macro  0001377f  00000000  00000000  00008c99  2**0
+ 12 .debug_macro  0001377f  00000000  00000000  00008ce8  2**0
                   CONTENTS, READONLY, DEBUGGING
- 13 .debug_line   00000d9e  00000000  00000000  0001c418  2**0
+ 13 .debug_line   00000d9f  00000000  00000000  0001c467  2**0
                   CONTENTS, READONLY, DEBUGGING
- 14 .debug_str    0007ddd6  00000000  00000000  0001d1b6  2**0
+ 14 .debug_str    0007ddd9  00000000  00000000  0001d206  2**0
                   CONTENTS, READONLY, DEBUGGING
- 15 .debug_frame  0000008c  00000000  00000000  0009af8c  2**2
+ 15 .debug_frame  0000008c  00000000  00000000  0009afe0  2**2
                   CONTENTS, READONLY, DEBUGGING
 
 Disassembly of section .text:
@@ -64,7 +64,7 @@ Disassembly of section .text:
     8102:	f240 0300 	movw	r3, #0
     8106:	f2c0 0300 	movt	r3, #0
     810a:	b12b      	cbz	r3, 8118 <__do_global_dtors_aux+0x24>
-    810c:	f248 20a8 	movw	r0, #33448	; 0x82a8
+    810c:	f248 20b4 	movw	r0, #33460	; 0x82b4
     8110:	f2c0 0000 	movt	r0, #0
     8114:	e000      	b.n	8118 <__do_global_dtors_aux+0x24>
     8116:	bf00      	nop
@@ -79,12 +79,12 @@ Disassembly of section .text:
     8128:	b510      	push	{r4, lr}
     812a:	b14b      	cbz	r3, 8140 <frame_dummy+0x20>
     812c:	f242 0104 	movw	r1, #8196	; 0x2004
-    8130:	f248 20a8 	movw	r0, #33448	; 0x82a8
+    8130:	f248 20b4 	movw	r0, #33460	; 0x82b4
     8134:	f2c2 0100 	movt	r1, #8192	; 0x2000
     8138:	f2c0 0000 	movt	r0, #0
     813c:	e000      	b.n	8140 <frame_dummy+0x20>
     813e:	bf00      	nop
-    8140:	f248 20a8 	movw	r0, #33448	; 0x82a8
+    8140:	f248 20b4 	movw	r0, #33460	; 0x82b4
     8144:	f2c0 0000 	movt	r0, #0
     8148:	6803      	ldr	r3, [r0, #0]
     814a:	b903      	cbnz	r3, 814e <frame_dummy+0x2e>
@@ -111,7 +111,7 @@ void Dummy_Handler(void)
 {
     8164:	b510      	push	{r4, lr}
         if (pSrc != pDest) {
-    8166:	f248 22a8 	movw	r2, #33448	; 0x82a8
+    8166:	f248 22b4 	movw	r2, #33460	; 0x82b4
     816a:	f2c0 0200 	movt	r2, #0
     816e:	f242 0300 	movw	r3, #8192	; 0x2000
     8172:	f2c2 0300 	movt	r3, #8192	; 0x2000
@@ -136,7 +136,7 @@ void Dummy_Handler(void)
     819e:	f242 0100 	movw	r1, #8192	; 0x2000
     81a2:	f2c2 0100 	movt	r1, #8192	; 0x2000
     81a6:	1851      	adds	r1, r2, r1
-    81a8:	f248 20a8 	movw	r0, #33448	; 0x82a8
+    81a8:	f248 20b4 	movw	r0, #33460	; 0x82b4
     81ac:	f2c0 0000 	movt	r0, #0
     81b0:	1810      	adds	r0, r2, r0
     81b2:	6800      	ldr	r0, [r0, #0]
@@ -179,7 +179,7 @@ void Dummy_Handler(void)
     8208:	f2ce 0200 	movt	r2, #57344	; 0xe000
     820c:	6093      	str	r3, [r2, #8]
         __libc_init_array();
-    820e:	f248 2339 	movw	r3, #33337	; 0x8239
+    820e:	f248 2345 	movw	r3, #33349	; 0x8245
     8212:	f2c0 0300 	movt	r3, #0
     8216:	4798      	blx	r3
         main();
@@ -196,70 +196,79 @@ void Dummy_Handler(void)
 /* Non-secure main() */
 int main(void)
 {
-    8228:	b510      	push	{r4, lr}
+    8228:	b500      	push	{lr}
+    822a:	b083      	sub	sp, #12
+	volatile int test = 0, retVal = 0;
+    822c:	2300      	movs	r3, #0
+    822e:	9301      	str	r3, [sp, #4]
+    8230:	9300      	str	r3, [sp, #0]
 	/* Call non-secure callable function secure_func1 */
-	secure_blink_led_10_s();
-    822a:	f647 4301 	movw	r3, #31745	; 0x7c01
-    822e:	f2c0 0300 	movt	r3, #0
-    8232:	4798      	blx	r3
-    8234:	e7fe      	b.n	8234 <main+0xc>
+	//secure_blink_led_10_s();
+	
+	retVal = secure_add_3(test);
+    8232:	9801      	ldr	r0, [sp, #4]
+    8234:	f647 4301 	movw	r3, #31745	; 0x7c01
+    8238:	f2c0 0300 	movt	r3, #0
+    823c:	4798      	blx	r3
+    823e:	9000      	str	r0, [sp, #0]
+    8240:	e7fe      	b.n	8240 <main+0x18>
 	...
 
-00008238 <__libc_init_array>:
-    8238:	b570      	push	{r4, r5, r6, lr}
-    823a:	2500      	movs	r5, #0
-    823c:	4b0e      	ldr	r3, [pc, #56]	; (8278 <__libc_init_array+0x40>)
-    823e:	4c0f      	ldr	r4, [pc, #60]	; (827c <__libc_init_array+0x44>)
-    8240:	1ae4      	subs	r4, r4, r3
-    8242:	10a4      	asrs	r4, r4, #2
-    8244:	42a5      	cmp	r5, r4
-    8246:	d109      	bne.n	825c <__libc_init_array+0x24>
-    8248:	2500      	movs	r5, #0
-    824a:	f000 f81d 	bl	8288 <_init>
-    824e:	4c0c      	ldr	r4, [pc, #48]	; (8280 <__libc_init_array+0x48>)
-    8250:	4b0c      	ldr	r3, [pc, #48]	; (8284 <__libc_init_array+0x4c>)
-    8252:	1ae4      	subs	r4, r4, r3
-    8254:	10a4      	asrs	r4, r4, #2
-    8256:	42a5      	cmp	r5, r4
-    8258:	d107      	bne.n	826a <__libc_init_array+0x32>
-    825a:	bd70      	pop	{r4, r5, r6, pc}
-    825c:	4a06      	ldr	r2, [pc, #24]	; (8278 <__libc_init_array+0x40>)
-    825e:	00ab      	lsls	r3, r5, #2
-    8260:	189b      	adds	r3, r3, r2
-    8262:	681b      	ldr	r3, [r3, #0]
-    8264:	4798      	blx	r3
-    8266:	3501      	adds	r5, #1
-    8268:	e7ec      	b.n	8244 <__libc_init_array+0xc>
-    826a:	4a06      	ldr	r2, [pc, #24]	; (8284 <__libc_init_array+0x4c>)
-    826c:	00ab      	lsls	r3, r5, #2
-    826e:	189b      	adds	r3, r3, r2
-    8270:	681b      	ldr	r3, [r3, #0]
-    8272:	4798      	blx	r3
-    8274:	3501      	adds	r5, #1
-    8276:	e7ee      	b.n	8256 <__libc_init_array+0x1e>
-    8278:	00008294 	.word	0x00008294
-    827c:	00008294 	.word	0x00008294
-    8280:	00008298 	.word	0x00008298
-    8284:	00008294 	.word	0x00008294
+00008244 <__libc_init_array>:
+    8244:	b570      	push	{r4, r5, r6, lr}
+    8246:	2500      	movs	r5, #0
+    8248:	4b0e      	ldr	r3, [pc, #56]	; (8284 <__libc_init_array+0x40>)
+    824a:	4c0f      	ldr	r4, [pc, #60]	; (8288 <__libc_init_array+0x44>)
+    824c:	1ae4      	subs	r4, r4, r3
+    824e:	10a4      	asrs	r4, r4, #2
+    8250:	42a5      	cmp	r5, r4
+    8252:	d109      	bne.n	8268 <__libc_init_array+0x24>
+    8254:	2500      	movs	r5, #0
+    8256:	f000 f81d 	bl	8294 <_init>
+    825a:	4c0c      	ldr	r4, [pc, #48]	; (828c <__libc_init_array+0x48>)
+    825c:	4b0c      	ldr	r3, [pc, #48]	; (8290 <__libc_init_array+0x4c>)
+    825e:	1ae4      	subs	r4, r4, r3
+    8260:	10a4      	asrs	r4, r4, #2
+    8262:	42a5      	cmp	r5, r4
+    8264:	d107      	bne.n	8276 <__libc_init_array+0x32>
+    8266:	bd70      	pop	{r4, r5, r6, pc}
+    8268:	4a06      	ldr	r2, [pc, #24]	; (8284 <__libc_init_array+0x40>)
+    826a:	00ab      	lsls	r3, r5, #2
+    826c:	189b      	adds	r3, r3, r2
+    826e:	681b      	ldr	r3, [r3, #0]
+    8270:	4798      	blx	r3
+    8272:	3501      	adds	r5, #1
+    8274:	e7ec      	b.n	8250 <__libc_init_array+0xc>
+    8276:	4a06      	ldr	r2, [pc, #24]	; (8290 <__libc_init_array+0x4c>)
+    8278:	00ab      	lsls	r3, r5, #2
+    827a:	189b      	adds	r3, r3, r2
+    827c:	681b      	ldr	r3, [r3, #0]
+    827e:	4798      	blx	r3
+    8280:	3501      	adds	r5, #1
+    8282:	e7ee      	b.n	8262 <__libc_init_array+0x1e>
+    8284:	000082a0 	.word	0x000082a0
+    8288:	000082a0 	.word	0x000082a0
+    828c:	000082a4 	.word	0x000082a4
+    8290:	000082a0 	.word	0x000082a0
 
-00008288 <_init>:
-    8288:	b5f8      	push	{r3, r4, r5, r6, r7, lr}
-    828a:	46c0      	nop			; (mov r8, r8)
-    828c:	bcf8      	pop	{r3, r4, r5, r6, r7}
-    828e:	bc08      	pop	{r3}
-    8290:	469e      	mov	lr, r3
-    8292:	4770      	bx	lr
+00008294 <_init>:
+    8294:	b5f8      	push	{r3, r4, r5, r6, r7, lr}
+    8296:	46c0      	nop			; (mov r8, r8)
+    8298:	bcf8      	pop	{r3, r4, r5, r6, r7}
+    829a:	bc08      	pop	{r3}
+    829c:	469e      	mov	lr, r3
+    829e:	4770      	bx	lr
 
-00008294 <__init_array_start>:
-    8294:	00008121 	.word	0x00008121
+000082a0 <__init_array_start>:
+    82a0:	00008121 	.word	0x00008121
 
-00008298 <_fini>:
-    8298:	b5f8      	push	{r3, r4, r5, r6, r7, lr}
-    829a:	46c0      	nop			; (mov r8, r8)
-    829c:	bcf8      	pop	{r3, r4, r5, r6, r7}
-    829e:	bc08      	pop	{r3}
-    82a0:	469e      	mov	lr, r3
-    82a2:	4770      	bx	lr
+000082a4 <_fini>:
+    82a4:	b5f8      	push	{r3, r4, r5, r6, r7, lr}
+    82a6:	46c0      	nop			; (mov r8, r8)
+    82a8:	bcf8      	pop	{r3, r4, r5, r6, r7}
+    82aa:	bc08      	pop	{r3}
+    82ac:	469e      	mov	lr, r3
+    82ae:	4770      	bx	lr
 
-000082a4 <__fini_array_start>:
-    82a4:	000080f5 	.word	0x000080f5
+000082b0 <__fini_array_start>:
+    82b0:	000080f5 	.word	0x000080f5

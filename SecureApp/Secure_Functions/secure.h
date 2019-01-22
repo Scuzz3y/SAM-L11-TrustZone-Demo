@@ -22,5 +22,6 @@
 #define SECURE_H_
 
 extern void blink_led_10_s(void);
+extern int add_3(int x);
 
 #endif /* SECURE_H_ */

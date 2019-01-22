@@ -23,5 +23,6 @@
 
 /* Non-secure callable functions */
 extern void secure_blink_led_10_s(void);
+extern int secure_add_3(int);
 
 #endif /* VENEER_H_ */

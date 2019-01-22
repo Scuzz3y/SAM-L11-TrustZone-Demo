@@ -18,7 +18,7 @@
  *
  */
 
-#include "sam.h"
+#include "atmel_start.h"
 
 /* TZ_START_NS: Start address of non-secure application */
 #define TZ_START_NS 0x00008000
@@ -50,8 +50,7 @@ int main(void)
 {
 	funcptr_void NonSecure_ResetHandler;
   	
-	/* Initialize the SAM system */
-    SystemInit();
+	atmel_start_init();
 
 	/* Set non-secure main stack (MSP_NS) */
 	__TZ_set_MSP_NS(*((uint32_t *)(TZ_START_NS)));

@@ -84,8 +84,9 @@
       <Value>../../SAM 11 - HAL/include</Value>
       <Value>../../SAM 11 - HAL/utils/include</Value>
       <Value>../../SAM 11 - HAL/hri</Value>
-      <Value>../../SAM 11 - HAL/hpl/port</Value>
-      <Value>../../SAM 11 - HAL/hpl/systick</Value>
+      <Value>..</Value>
+      <Value>../../SAM 11 - HAL/config</Value>
+      <Value>../../SAM 11 - HAL/hpl/include</Value>
     </ListValues>
   </armgcc.compiler.directories.IncludePaths>
   <armgcc.compiler.optimization.level>Optimize (-O1)</armgcc.compiler.optimization.level>
@@ -128,10 +129,25 @@
     </ToolchainSettings>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="atmel_start.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="atmel_start.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="atmel_start_pins.h">
+      <SubType>compile</SubType>
+    </Compile>
     <Compile Include="Device_Startup\startup_saml11e16a.c">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="Device_Startup\system_saml11e16a.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="driver_init.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="driver_init.h">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="main.c">
